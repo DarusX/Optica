@@ -21,8 +21,7 @@
                             <td>{{$patient->full_name}}</td>
                             <td>{{$patient->phone}}</td>
                             <td>
-                                <a href="{{route('patients.edit', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-font" aria-hidden="true"></i></a>
-                                <a href="{{route('patients.edit', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
+                                <a href="{{route('patients.show', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                 <a href="{{route('patients.edit', $patient)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                 <a href="{{route('patients.edit', $patient)}}" class="btn btn-xs btn-danger destroy"><i class="fa fa-times" aria-hidden="true"></i></a>
                             </td>

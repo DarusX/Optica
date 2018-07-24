@@ -30,17 +30,14 @@
                 <i class="icon-padnote"></i>Forms </a>
         </li>
         <li>
-            <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse">
-                <i class="icon-interface-windows"></i>Example dropdown </a>
-            <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+            <a href="#patients-menu" aria-expanded="false" data-toggle="collapse">
+                <i class="icon-interface-windows"></i>Pacientes</a>
+            <ul id="patients-menu" class="collapse list-unstyled ">
                 <li>
-                    <a href="#">Page</a>
+                    <a href="{{route('patients.index')}}">Todos</a>
                 </li>
                 <li>
-                    <a href="#">Page</a>
-                </li>
-                <li>
-                    <a href="#">Page</a>
+                    <a href="{{route('patients.create')}}">Registrar</a>
                 </li>
             </ul>
         </li>

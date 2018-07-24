@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin-ext');
 body{
     font-family: 'Open Sans', sans-serif;
+    color: #636b6f;
 }
 .btn-xs{
     padding: 1px 5px;

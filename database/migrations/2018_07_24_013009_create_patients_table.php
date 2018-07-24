@@ -18,7 +18,9 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->text('address');
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable();
+            $table->string('cell_phone')->nullable();
+            $table->string('work')->nullable();
             $table->integer('branch_id')->unsigned();
             $table->timestamps();
 

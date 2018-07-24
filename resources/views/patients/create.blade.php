@@ -38,6 +38,20 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label">Teléfono celular</label>
+                        <input type="text" class="mr-3 form-control {{ $errors->has('cell_phone') ? 'is-invalid' : '' }}" name="cell_phone">
+                        @if ($errors->has('phone'))
+                        <div class="invalid-feedback">{{ $errors->first('cell_phone') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Lugar de trabajo</label>
+                        <input type="text" class="mr-3 form-control {{ $errors->has('work') ? 'is-invalid' : '' }}" name="work">
+                        @if ($errors->has('work'))
+                        <div class="invalid-feedback">{{ $errors->first('work') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary">Aceptar</button>
                     </div>
                 </form>

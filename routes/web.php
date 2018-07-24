@@ -19,6 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::resources([
-    'patients' => 'PatientsController',
+    'patients' => 'PatientsController'
+]);
+Route::get('/patients/{id}/exams/create', 'ExamsController@create')->name('exams.create');
+Route::resource('exams', 'ExamsController')->except([
+    'create'
 ]);

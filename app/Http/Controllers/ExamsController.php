@@ -3,30 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Patient;
 use Session;
+use App\Patient;
+use App\Exam;
 
-class PatientsController extends Controller
+class ExamsController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth');
     }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $patients;
-
-        if($request->query('query') != null) $patients = Patient::search($request->query('query'));
-        else $patients = Patient::paginate(20);
-        return view('patients.index')->with([
-            'patients' => $patients
-        ]);
+        //
     }
 
     /**
@@ -34,9 +30,11 @@ class PatientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('patients.create');
+        return view('exams.create')->with([
+            'patient' => Patient::find($id)
+        ]);
     }
 
     /**
@@ -47,17 +45,12 @@ class PatientsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'lastname' => 'required',
-            'address' => 'required',
-        ]);
-        
-        $patient = Patient::create($request->all());
+        Exam::create($request->all());
 
-        Session::flash('msg', 'Paciente registrado');
+        Session::flash('msg', 'Registro guardado');
 
-        return redirect()->route('patients.show', $patient);
+        return redirect()->route('patients.show', $request->patient_id);
+
     }
 
     /**
@@ -68,9 +61,7 @@ class PatientsController extends Controller
      */
     public function show($id)
     {
-        return view('patients.show')->with([
-            'patient' => Patient::find($id)
-        ]);
+        //
     }
 
     /**
