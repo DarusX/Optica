@@ -44,4 +44,9 @@ class Patient extends Model
     {
         return $query->where('name', 'LIKE', '%' . $param . '%')->orWhere('lastname', 'LIKE', '%' . $param . '%')->get();
     }
+
+    public function sales()
+    {
+        return $this->hasManyThrough(Sale::class, Exam::class);
+    }
 }

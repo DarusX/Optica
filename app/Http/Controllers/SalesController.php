@@ -3,18 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
-use App\Patient;
+use App\Sale;
 use App\Exam;
+use App\Material;
 
-class ExamsController extends Controller
+class SalesController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -32,8 +26,9 @@ class ExamsController extends Controller
      */
     public function create($id)
     {
-        return view('exams.create')->with([
-            'patient' => Patient::find($id)
+        return view('sales.create')->with([
+            'exam' => Exam::find($id),
+            'materials' => Material::all()
         ]);
     }
 
@@ -45,12 +40,7 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        Exam::create($request->all());
-
-        Session::flash('msg', 'Registro guardado');
-
-        return redirect()->route('patients.show', $request->patient_id);
-
+        Sale::create($request->all());
     }
 
     /**
@@ -61,9 +51,7 @@ class ExamsController extends Controller
      */
     public function show($id)
     {
-        return view('exams.show')->with([
-            'patient' => Patient::find($id)
-        ]);
+        //
     }
 
     /**
