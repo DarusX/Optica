@@ -25,6 +25,48 @@
                         <div class="badge badge-rounded bg-gray">{{$exam->creator->name}}</div>
                     </div>
                     <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Esfera</th>
+                                    <th>Cilindro</th>
+                                    <th>Eje</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        OD - OI
+                                        <br>
+                                        <small>Oculus dexter</small>
+                                    </th>
+                                    <td>{{$exam->od_sphere}}</td>
+                                    <td>{{$exam->od_cylinder}}</td>
+                                    <td>{{$exam->od_axis}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        OS - OD
+                                        <br>
+                                        <small>Oculus sinister</small>
+                                    </th>
+                                    <td>{{$exam->os_sphere}}</td>
+                                    <td>{{$exam->os_cylinder}}</td>
+                                    <td>{{$exam->os_axis}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        OU - OA
+                                        <br>
+                                        <small>Oculus uterque</small>
+                                    </th>
+                                    <td>{{$exam->ou_sphere}}</td>
+                                    <td>{{$exam->ou_cylinder}}</td>
+                                    <td>{{$exam->ou_axis}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <form action="{{route('sales.store')}}" method="post">
                             {{csrf_field()}}
                             <input type="hidden" name="exam_id" value="{{$exam->id}}">
@@ -41,22 +83,19 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Armazón</label>
-                                <input type="text" class="form-control" name="frame">
-                                @if ($errors->has('frame'))
+                                <input type="text" class="form-control" name="frame"> @if ($errors->has('frame'))
                                 <div class="invalid-feedback">{{ $errors->first('frame') }}</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Total</label>
-                                <input type="text" class="form-control" name="total">
-                                @if ($errors->has('total'))
+                                <input type="text" class="form-control" name="total"> @if ($errors->has('total'))
                                 <div class="invalid-feedback">{{ $errors->first('total') }}</div>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Nota</label>
-                                <input type="text" class="form-control" name="notes">
-                                @if ($errors->has('notes'))
+                                <input type="text" class="form-control" name="notes"> @if ($errors->has('notes'))
                                 <div class="invalid-feedback">{{ $errors->first('notes') }}</div>
                                 @endif
                             </div>

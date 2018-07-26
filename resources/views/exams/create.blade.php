@@ -22,64 +22,64 @@
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    OD <br>
+                                    OD - OI<br>
                                     <small>Oculus dexter</small>
                                 </th>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="od_sphere">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="od_cylinder">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="od_axis">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    OS <br>
+                                    OS - OD<br>
                                     <small>Oculus sinister</small>
                                 </th>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="os_sphere">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="os_cylinder">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="os_axis">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    OU <br>
+                                    OU - OA <br>
                                     <small>Oculus uterque</small>
                                 </th>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="ou_sphere">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="ou_cylinder">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="ou_axis">
                                     </div>
                                 </td>
                             </tr>

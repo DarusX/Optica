@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Branch;
+use App\Material;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +15,23 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         Branch::create([
-            'branch' => 'Optica del Sur'
+            'branch' => 'Óptica del Sur'
         ])->users()->createMany([
             [
                 'name' => 'Fabián Montero',
                 'username' => 'fabian.montero',
                 'password' => bcrypt('123456')
             ]
+        ]);
+
+        Material::create([
+            'material' => 'Material 1'
+        ]);
+        Material::create([
+            'material' => 'Material 2'
+        ]);
+        Material::create([
+            'material' => 'Material 3'
         ]);
     }
 }

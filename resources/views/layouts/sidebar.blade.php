@@ -18,18 +18,6 @@
                 <i class="icon-home"></i>Home </a>
         </li>
         <li>
-            <a href="tables.html">
-                <i class="icon-grid"></i>Tables </a>
-        </li>
-        <li>
-            <a href="charts.html">
-                <i class="fa fa-bar-chart"></i>Charts </a>
-        </li>
-        <li>
-            <a href="forms.html">
-                <i class="icon-padnote"></i>Forms </a>
-        </li>
-        <li>
             <a href="#patients-menu" aria-expanded="false" data-toggle="collapse">
                 <i class="icon-interface-windows"></i>Pacientes</a>
             <ul id="patients-menu" class="collapse list-unstyled ">
@@ -38,6 +26,21 @@
                 </li>
                 <li>
                     <a href="{{route('patients.create')}}">Registrar</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#sales-menu" aria-expanded="false" data-toggle="collapse">
+                <i class="icon-interface-windows"></i>Ventas</a>
+            <ul id="sales-menu" class="collapse list-unstyled ">
+                <li>
+                    <a href="{{route('sales.index', ['query' => 'Buscar'])}}">Todas</a>
+                </li>
+                <li>
+                    <a href="{{route('sales.index', ['query' => 'pendientes'])}}">Pendientes</a>
+                </li>
+                <li>
+                    <a href="{{route('sales.index', ['query' => 'listas'])}}">Listas</a>
                 </li>
             </ul>
         </li>

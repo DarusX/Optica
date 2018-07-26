@@ -14,9 +14,11 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('sales.index')->with([
+            'sales' => Sale::all()
+        ]);
     }
 
     /**
