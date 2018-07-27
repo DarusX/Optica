@@ -90,7 +90,7 @@
                         <br>
                         <small>Examenes</small>
                         <br>
-                        <a href="{{route('exams.show', $patient)}}" class="btn btn-xs btn-danger"><i class="fa fa-history" aria-hidden="true"></i> Historial</a>
+                        <a href="{{route('patients.exams', $patient)}}" class="btn btn-xs btn-danger"><i class="fa fa-history" aria-hidden="true"></i> Historial</a>
                         <a href="{{route('exams.create', $patient)}}" class="btn btn-xs btn-danger"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         <strong>{{$patient->sales->count()}}</strong>
                         <br>
                         <small>Ventas</small><br>
-                        <a href="{{route('exams.create', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-history" aria-hidden="true"></i> Historial</a>
+                        <a href="{{route('patients.sales', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-history" aria-hidden="true"></i> Historial</a>
                         <a href="{{route('exams.create', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
                     </div>
                 </div>

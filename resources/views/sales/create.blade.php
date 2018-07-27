@@ -10,7 +10,7 @@
             <a href="{{route('patients.show', $exam->patient)}}">{{$exam->patient->full_name}}</a>
         </li>
         <li class="breadcrumb-item">
-            <a href="{{route('exams.show', $exam->patient)}}">Exámenes</a>
+            <a href="{{route('patients.exams', $exam->patient)}}">Exámenes</a>
         </li>
         <li class="breadcrumb-item active">Venta</li>
     </ul>

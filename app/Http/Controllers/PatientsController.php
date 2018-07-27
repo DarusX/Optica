@@ -73,6 +73,20 @@ class PatientsController extends Controller
         ]);
     }
 
+    public function exams($id)
+    {
+        return view('patients.exams')->with([
+            'patient' => Patient::find($id)
+        ]);
+    }
+
+    public function sales($id)
+    {
+        return view('patients.sales')->with([
+            'patient' => Patient::find($id)
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

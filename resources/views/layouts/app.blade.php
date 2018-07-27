@@ -67,6 +67,11 @@
                 }
             })
         })
+        $(".payment").click(function(event){
+            event.preventDefault()
+            $("#modal-payment").find("form").attr("action", $(this).attr("href"));
+            $("#modal-payment").modal("toggle")
+        })
     </script>
 </body>
 

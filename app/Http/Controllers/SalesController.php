@@ -42,7 +42,9 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        Sale::create($request->all());
+        $sale = Sale::create($request->all());
+
+        return redirect()->route('sales.show', $sale);
     }
 
     /**
@@ -53,7 +55,9 @@ class SalesController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('sales.show')->with([
+            'sale' => Sale::find($id)
+        ]);
     }
 
     /**
@@ -88,5 +92,11 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function payment(Request $request, $id)
+    {
+        Sale::find($id)->payments()->create($request->all());
+        return redirect()->back();
     }
 }

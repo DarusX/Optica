@@ -21,3 +21,16 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Patient::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'lastname' => $faker->lastname,
+        'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'phone' => $faker->phoneNumber,
+        'cell_phone' => $faker->phoneNumber,
+        'address' => $faker->address,
+        'work' => $faker->company,
+        'branch_id' => 1,
+    ];
+});

@@ -24,12 +24,13 @@ Route::resources([
     'patients' => 'PatientsController'
 ]);
 Route::get('/patients/{id}/exams/create', 'ExamsController@create')->name('exams.create');
-Route::get('/patients/{id}/exams', 'ExamsController@show')->name('exams.show');
+Route::get('/patients/{id}/exams', 'PatientsController@exams')->name('patients.exams');
+Route::get('/patients/{id}/sales', 'PatientsController@sales')->name('patients.sales');
 Route::get('/exams/{id}/sales/create', 'SalesController@create')->name('sales.create');
 Route::resource('exams', 'ExamsController')->except([
     'create', 'show'
 ]);
-
+Route::post('/sales/{id}/payment', 'SalesController@payment')->name('sales.payment');
 Route::resource('sales', 'SalesController')->except([
-    'create', 'show'
+    'create'
 ]);

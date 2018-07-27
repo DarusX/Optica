@@ -33,5 +33,7 @@ class DatabaseSeeder extends Seeder
         Material::create([
             'material' => 'Material 3'
         ]);
+
+        factory(App\Patient::class, 50)->create();
     }
 }

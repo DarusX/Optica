@@ -20,6 +20,26 @@ class Sale extends Model
         'frame', 'notes', 'total', 'paid', 'status', 'material_id', 'exam_id', 'created_by'
     ];
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class);
+    }
+
+    public function material()
+    {
+        return $this->belongsTo(Material::class);
+    }
+
+    public function getRemainingAttribute()
+    {
+        return $this->total - $this->payments->sum('payment');
+    }
+
     public function getFullStatusAttribute()
     {
         $fullStatus = '';

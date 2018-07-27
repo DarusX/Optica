@@ -22,7 +22,7 @@ class Patient extends Model
     }
 
     protected $fillable = [
-        'name', 'lastname', 'address', 'phone', 'cell_phone', 'work', 'branch_id'
+        'name', 'lastname', 'birthdate', 'address', 'phone', 'cell_phone', 'work', 'branch_id'
     ];
 
     public function branch()
