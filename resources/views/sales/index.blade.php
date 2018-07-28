@@ -1,17 +1,9 @@
 @extends('layouts.app') @section('content')
 <header class="page-header">
     <div class="container-fluid">
-        <h2 class="no-margin-bottom"></h2>
+        <h2 class="no-margin-bottom">Ventas</h2>
     </div>
 </header>
-<div class="breadcrumb-holder container-fluid">
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href=""></a>
-        </li>
-        <li class="breadcrumb-item active">Exámenes</li>
-    </ul>
-</div>
 <section class="dashboard-header">
     <div class="container-fluid">
             <table class="table">
@@ -32,7 +24,7 @@
                         @foreach($sales as $sale)
                         <tr>
                             <td>{{$sale->id}}</td>
-                            <td>{{$sale->created_at->diffForHumans()}}</td>
+                            <td>{{$sale->created_at->format('Y-m-d')}}</td>
                             <td>{{$sale->frame}}</td>
                             <td>{{$sale->material->material}}</td>
                             <td>{{number_format($sale->total, 2)}}</td>

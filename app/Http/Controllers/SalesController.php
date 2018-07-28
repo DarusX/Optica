@@ -44,7 +44,7 @@ class SalesController extends Controller
     {
         $sale = Sale::create($request->all());
 
-        return redirect()->route('sales.show', $sale);
+        return redirect()->route('patients.sales', $sale->exam->patient_id);
     }
 
     /**

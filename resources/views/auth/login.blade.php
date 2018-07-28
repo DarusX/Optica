@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label">Contraseña</label>
-                        <input type="text" class="mr-3 form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password">
+                        <input type="password" class="mr-3 form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password">
                         @if ($errors->has('password'))
                         <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                         @endif
