@@ -34,9 +34,11 @@
         @include('layouts.navbar')
         <div class="page-content d-flex align-items-stretch">
             <!-- Side Navbar -->
+            @auth
             @include('layouts.sidebar')
+            @endauth
 
-            <div class="content-inner">
+            <div class="content-inner" style="{{(Auth::user())?'':'width: 100%'}}">
                 <!-- Page Footer-->
                 @yield('content')
                 @include('layouts.footer')
