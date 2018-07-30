@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
+@section('content')
 <header class="page-header">
     <div class="container-fluid">
         <h2 class="no-margin-bottom">{{$patient->full_name}}</h2>
@@ -15,51 +16,32 @@
 <section class="dashboard-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            @foreach($patient->exams as $exam) 
+            @foreach($exam->sales as $sale)
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">Ventas</h3>
+                        <h3 class="h4">{{$sale->created_at->format('d M Y')}}</h3>
+                        <div class="badge badge-rounded bg-blue">{{$sale->full_status}}</div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Fecha</th>
-                                    <th>Armazón</th>
-                                    <th>Material</th>
-                                    <th>Total</th>
-                                    <th>Pagado</th>
-                                    <th>Restante</th>
-                                    <th>Estatus</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($patient->exams as $exam) @foreach($exam->sales as $sale)
-                                <tr>
-                                    <td>{{$sale->id}}</td>
-                                    <td>{{$sale->created_at->diffForHumans()}}</td>
-                                    <td>{{$sale->frame}}</td>
-                                    <td>{{$sale->material->material}}</td>
-                                    <td>{{number_format($sale->total, 2)}}</td>
-                                    <td>{{number_format($sale->payments->sum('payment'), 2)}}</td>
-                                    <td>{{number_format($sale->remaining, 2)}}</td>
-                                    <td>{{$sale->full_status}}</td>
-                                    <td>
-                                        @if($sale->payments->sum('payment') < $sale->total)
-                                        <a href="{{route('sales.payment', $sale)}}" data-id="{{$sale->id}}" class="btn btn-xs btn-success payment">
-                                            <i class="fa fa-usd" aria-hidden="true"></i>
-                                        </a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach @endforeach
-                            </tbody>
-                        </table>
+                        <p><strong>Descripción: </strong>{{$sale->material->material}}, {{$sale->frame}}</p>
+                        <p><strong>Total: </strong>{{number_format($sale->total, 2)}}</p>
+                        <p><strong>Total: </strong>{{number_format($sale->total, 2)}}</p>
+                        <p><strong>Pagado: </strong>{{number_format($sale->payments->sum('payment'), 2)}}</p>
+                        <p><strong>Restante: </strong>{{number_format($sale->remaining, 2)}}</p>
+                        @if($sale->payments->sum('payment') < $sale->total)
+                        <a href="{{route('sales.payment', $sale)}}" data-id="{{$sale->id}}" data-max="{{number_format($sale->remaining, 2)}}" class="btn btn-success payment">
+                            <i class="fa fa-usd" aria-hidden="true"></i> Pago
+                        </a>
+                        @else
+                        <button class="btn btn-default">Pagado</button>
+                        @endif
                     </div>
                 </div>
             </div>
+            @endforeach 
+            @endforeach
         </div>
     </div>
 </section>

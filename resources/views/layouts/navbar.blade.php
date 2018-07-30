@@ -16,8 +16,9 @@
                     <!-- Navbar Brand -->
                     <a href="index.html" class="navbar-brand d-none d-sm-inline-block">
                         <div class="brand-text d-none d-lg-inline-block">
-                            <span>Bootstrap </span>
-                            <strong>Dashboard</strong>
+                            @auth
+                            <span>{{Auth::user()->branch->branch}}</span>
+                            @endauth
                         </div>
                         <div class="brand-text d-none d-sm-inline-block d-lg-none">
                             <strong>BD</strong>
@@ -147,10 +148,17 @@
                     </li>
                     <!-- Logout    -->
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link logout">
-                            <span class="d-none d-sm-inline">Logout</span>
+                        @auth
+                        <a href="#" class="nav-link logout">
+                            <span class="d-none d-sm-inline">Salir</span>
                             <i class="fa fa-sign-out"></i>
                         </a>
+                        @else
+                        <a href="{{route('login')}}" class="nav-link">
+                            <span class="d-none d-sm-inline">Ingresar</span>
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                        @endauth
                     </li>
                 </ul>
             </div>

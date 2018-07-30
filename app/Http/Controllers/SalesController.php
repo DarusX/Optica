@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use App\Sale;
 use App\Exam;
 use App\Material;
+use App\Patient;
 
 class SalesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,9 @@ class SalesController extends Controller
     public function index(Request $request)
     {
         return view('sales.index')->with([
-            'sales' => Sale::all()
+            'patients' => Patient::whereHas('sales', function($query) use ($request){
+                $query->whereBetween('sales.created_at', [date($request->query('from')), date($request->query('to'))]);
+            })->get()
         ]);
     }
 

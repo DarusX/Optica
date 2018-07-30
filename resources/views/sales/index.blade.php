@@ -6,42 +6,80 @@
 </header>
 <section class="dashboard-header">
     <div class="container-fluid">
-            <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Fecha</th>
-                            <th>Armazón</th>
-                            <th>Material</th>
-                            <th>Total</th>
-                            <th>Pagado</th>
-                            <th>Restante</th>
-                            <th>Estatus</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($sales as $sale)
-                        <tr>
-                            <td>{{$sale->id}}</td>
-                            <td>{{$sale->created_at->format('Y-m-d')}}</td>
-                            <td>{{$sale->frame}}</td>
-                            <td>{{$sale->material->material}}</td>
-                            <td>{{number_format($sale->total, 2)}}</td>
-                            <td>{{number_format($sale->payments->sum('payment'), 2)}}</td>
-                            <td>{{number_format($sale->remaining, 2)}}</td>
-                            <td>{{$sale->full_status}}</td>
-                            <td>
-                                @if($sale->payments->sum('payment') < $sale->total)
-                                <a href="{{route('sales.payment', $sale)}}" data-id="{{$sale->id}}" class="btn btn-xs btn-success payment">
-                                    <i class="fa fa-usd" aria-hidden="true"></i>
-                                </a>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach 
-                    </tbody>
-                </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="sr-only">Desde</label>
+                                <input type="text" class="mr-3 form-control datepicker" name="from" placeholder="Desde" required autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Hasta</label>
+                                <input type="text" class="mr-3 form-control datepicker" name="to" placeholder="Hasta" required autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach($patients as $patient)
+            @foreach($patient->sales as $sale)
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">{{$sale->created_at->format('d M Y')}}</h3>
+                        <div class="badge badge-rounded bg-blue">{{$sale->status}}</div>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Descripción: </strong>{{$sale->material->material}}, {{$sale->frame}}</p>
+                        <p><strong>Total: </strong>{{number_format($sale->total, 2)}}</p>
+                        <p><strong>Pagado: </strong>{{number_format($sale->payments->sum('payment'), 2)}}</p>
+                        <p><strong>Restante: </strong>{{number_format($sale->remaining, 2)}}</p>
+                        @if($sale->payments->sum('payment') < $sale->total)
+                        <a href="{{route('sales.payment', $sale)}}" data-id="{{$sale->id}}" data-max="{{number_format($sale->remaining, 2)}}" class="btn btn-success payment">
+                            <i class="fa fa-usd" aria-hidden="true"></i> Pago
+                        </a>
+                        @else
+                        <button class="btn btn-default">Pagado</button>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endforeach 
+            @endforeach 
+        </div>
     </div>
 </section>
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-payment">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar pago</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="sale_id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Cantidad</label>
+                        <input type="number" step="0.01" class="form-control" name="payment">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

@@ -16,10 +16,10 @@
     <div class="container-fluid">
         <div class="row">
             @foreach($patient->exams as $exam)
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">{{$exam->created_at->diffForHumans()}}</h3>
+                        <h3 class="h4">{{$exam->created_at->format('d M Y')}}</h3>
                         <div class="badge badge-rounded bg-gray">{{$exam->creator->name}}</div>
                         @if(count($exam->sales))
                         <div class="badge badge-rounded bg-blue">Con venta</div>

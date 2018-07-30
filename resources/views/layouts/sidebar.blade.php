@@ -30,23 +30,9 @@
             </ul>
         </li>
         <li>
-            <a href="#sales-menu" aria-expanded="false" data-toggle="collapse">
-                <i class="icon-interface-windows"></i>Ventas</a>
-            <ul id="sales-menu" class="collapse list-unstyled ">
-                <li>
-                    <a href="{{route('sales.index', ['query' => 'Buscar'])}}">Todas</a>
-                </li>
-                <li>
-                    <a href="{{route('sales.index', ['query' => 'pendientes'])}}">Pendientes</a>
-                </li>
-                <li>
-                    <a href="{{route('sales.index', ['query' => 'listas'])}}">Listas</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="login.html">
-                <i class="icon-interface-windows"></i>Login page </a>
+            <a href="{{route('sales.index')}}">
+                <i class="icon-interface-windows"></i>Ventas
+            </a>
         </li>
     </ul>
     <span class="heading">Extras</span>
