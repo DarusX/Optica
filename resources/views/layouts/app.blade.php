@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{asset('theme/assets/bootstrap/css/bootstrap.min.css')}}">
     <!-- Font Awesome CSS-->
@@ -22,12 +23,8 @@
     <link rel="stylesheet" href="{{asset('theme/css/custom.css')}}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
-
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- Tweaks for older IEs-->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    
 </head>
 
 <body>
@@ -77,6 +74,11 @@
             $("#modal-payment").find("form").attr("action", $(this).attr("href"));
             $("#modal-payment").find("input[name='payment']").attr("max", $(this).attr("data-max"));
             $("#modal-payment").modal("toggle")
+        })
+        $(".status").click(function(event){
+            event.preventDefault()
+            $("#modal-status").find("form").attr("action", $(this).attr("href"));
+            $("#modal-status").modal("toggle")
         })
         $(".datepicker").datepicker({
             dateFormat: "yy-mm-dd"

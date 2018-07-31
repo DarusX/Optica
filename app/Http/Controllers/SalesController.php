@@ -7,6 +7,7 @@ use App\Sale;
 use App\Exam;
 use App\Material;
 use App\Patient;
+use Carbon\Carbon;
 
 class SalesController extends Controller
 {
@@ -23,7 +24,11 @@ class SalesController extends Controller
     {
         return view('sales.index')->with([
             'patients' => Patient::whereHas('sales', function($query) use ($request){
-                $query->whereBetween('sales.created_at', [date($request->query('from')), date($request->query('to'))]);
+                if($request->query('from') != null ){
+                    $query->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
+                } else {
+                    $query->whereDate('sales.created_at', Carbon::today());
+                }
             })->get()
         ]);
     }
@@ -87,7 +92,8 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Sale::find($id)->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -104,6 +110,17 @@ class SalesController extends Controller
     public function payment(Request $request, $id)
     {
         Sale::find($id)->payments()->create($request->all());
+        $this->updatePaid($id);
         return redirect()->back();
+    }
+
+    public function updatePaid($id)
+    {
+        $sale = Sale::find($id);
+        if($sale->remaining == 0){
+            $sale->update([
+                'paid' => 1
+            ]);
+        }
     }
 }

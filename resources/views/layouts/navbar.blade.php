@@ -44,16 +44,16 @@
                         <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" class="nav-link">
                             <i class="fa fa-bell-o"></i>
-                            <span class="badge bg-red badge-corner">12</span>
+                            <span class="badge bg-red badge-corner">{{App\Sale::whereNotIn('status', ['Entregado'])->count()}}</span>
                         </a>
                         <ul aria-labelledby="notifications" class="dropdown-menu">
                             <li>
                                 <a rel="nofollow" href="#" class="dropdown-item">
                                     <div class="notification">
                                         <div class="notification-content">
-                                            <i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
+                                            <i class="fa fa-envelope bg-green"></i>{{App\Sale::where('status', 'Preparando')->count()}} Preparando</div>
                                         <div class="notification-time">
-                                            <small>4 minutes ago</small>
+                                            <small>{{Carbon\Carbon::now()->format('h:i a')}}</small>
                                         </div>
                                     </div>
                                 </a>
@@ -62,38 +62,11 @@
                                 <a rel="nofollow" href="#" class="dropdown-item">
                                     <div class="notification">
                                         <div class="notification-content">
-                                            <i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
+                                            <i class="fa fa-envelope bg-green"></i>{{App\Sale::where('status', 'Listo')->count()}} Listo</div>
                                         <div class="notification-time">
-                                            <small>4 minutes ago</small>
+                                            <small>{{Carbon\Carbon::now()->format('h:i a')}}</small>
                                         </div>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item">
-                                    <div class="notification">
-                                        <div class="notification-content">
-                                            <i class="fa fa-upload bg-orange"></i>Server Rebooted</div>
-                                        <div class="notification-time">
-                                            <small>4 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item">
-                                    <div class="notification">
-                                        <div class="notification-content">
-                                            <i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
-                                        <div class="notification-time">
-                                            <small>10 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item all-notifications text-center">
-                                    <strong>view all notifications </strong>
                                 </a>
                             </li>
                         </ul>
@@ -103,47 +76,22 @@
                         <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" class="nav-link">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-orange badge-corner">10</span>
+                            <span class="badge bg-orange badge-corner">{{App\Sale::where('paid', 0)->count()}}</span>
                         </a>
                         <ul aria-labelledby="notifications" class="dropdown-menu">
+                            @foreach(App\Sale::where('paid', 0)->get() as $sale)
                             <li>
-                                <a rel="nofollow" href="#" class="dropdown-item d-flex">
+                                <a rel="nofollow" href="{{route('patients.sales', $sale->exam->patient)}}" class="dropdown-item d-flex">
                                     <div class="msg-profile">
-                                        <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle">
+                                        <img src="{{asset('theme/img/avatar-1.jpg')}}" alt="..." class="img-fluid rounded-circle">
                                     </div>
                                     <div class="msg-body">
-                                        <h3 class="h5">Jason Doe</h3>
-                                        <span>Sent You Message</span>
+                                        <h3 class="h5">{{$sale->exam->patient->full_name}}</h3>
+                                        <span>{{number_format($sale->remaining, 2)}}</span>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item d-flex">
-                                    <div class="msg-profile">
-                                        <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
-                                    </div>
-                                    <div class="msg-body">
-                                        <h3 class="h5">Frank Williams</h3>
-                                        <span>Sent You Message</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item d-flex">
-                                    <div class="msg-profile">
-                                        <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle">
-                                    </div>
-                                    <div class="msg-body">
-                                        <h3 class="h5">Ashley Wood</h3>
-                                        <span>Sent You Message</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item all-notifications text-center">
-                                    <strong>Read all messages </strong>
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </li>
                     <!-- Logout    -->
