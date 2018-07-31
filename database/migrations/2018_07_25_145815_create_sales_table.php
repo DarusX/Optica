@@ -20,6 +20,7 @@ class CreateSalesTable extends Migration
             $table->double('total');
             $table->integer('material_id')->unsigned();
             $table->integer('exam_id')->unsigned();
+            $table->integer('branch_id')->unsigned();
             $table->integer('created_by')->unsigned();
             $table->boolean('paid')->default(0);
             $table->enum('status', ['Preparando', 'Listo', 'Entregado'])->default('Preparando');
@@ -28,6 +29,7 @@ class CreateSalesTable extends Migration
             $table->foreign('material_id')->references('id')->on('materials');
             $table->foreign('exam_id')->references('id')->on('exams');
             $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('branch_id')->references('id')->on('branches');
         });
     }
 

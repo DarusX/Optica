@@ -17,6 +17,7 @@ class CreatePatientsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('lastname');
+            $table->enum('gender', ['Hombre', 'Mujer']);
             $table->date('birthdate');
             $table->text('address');
             $table->string('phone')->nullable();

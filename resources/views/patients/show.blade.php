@@ -23,6 +23,34 @@
                         <i class="icon-user"></i>
                     </div>
                     <div class="title">
+                        <span>Sexo<br>
+                            <strong>{{$patient->gender}}</strong></span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet">
+                        <i class="icon-user"></i>
+                    </div>
+                    <div class="title">
+                        <span>Edad<br>
+                            <strong>{{$patient->age}}</strong></span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet">
+                        <i class="icon-user"></i>
+                    </div>
+                    <div class="title">
                         <span>Teléfono celular<br>
                             <strong>{{$patient->cell_phone}}</strong></span>
                         <div class="progress">

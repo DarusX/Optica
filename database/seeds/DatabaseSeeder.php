@@ -34,6 +34,6 @@ class DatabaseSeeder extends Seeder
             'material' => 'Material 3'
         ]);
 
-        factory(App\Patient::class, 50)->create();
+        //factory(App\Patient::class, 50)->create();
     }
 }

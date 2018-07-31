@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Carbon\Carbon;
 
 class Patient extends Model
 {
@@ -22,7 +23,7 @@ class Patient extends Model
     }
 
     protected $fillable = [
-        'name', 'lastname', 'birthdate', 'address', 'phone', 'cell_phone', 'work', 'branch_id'
+        'name', 'lastname', 'birthdate', 'gender', 'address', 'phone', 'cell_phone', 'work', 'branch_id'
     ];
 
     public function branch()
@@ -38,6 +39,11 @@ class Patient extends Model
     public function getFullNameAttribute()
     {
         return $this->name . ' ' . $this->lastname;
+    }
+    
+    public function getAgeAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d',$this->birthdate)->age;
     }
 
     public function scopeSearch($query, $param)

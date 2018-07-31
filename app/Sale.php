@@ -13,11 +13,12 @@ class Sale extends Model
 
         self::creating(function ($model){
             $model->created_by = Auth::id();
+            $model->branch_id = Auth::user()->branch_id;
         });
     }
 
     protected $fillable = [
-        'frame', 'notes', 'total', 'paid', 'status', 'material_id', 'exam_id', 'created_by'
+        'frame', 'notes', 'total', 'paid', 'status', 'material_id', 'exam_id', 'created_by', 'branch_id'
     ];
 
     public function payments()

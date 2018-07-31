@@ -23,13 +23,18 @@ class SalesController extends Controller
     public function index(Request $request)
     {
         return view('sales.index')->with([
-            'patients' => Patient::whereHas('sales', function($query) use ($request){
-                if($request->query('from') != null ){
-                    $query->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
-                } else {
-                    $query->whereDate('sales.created_at', Carbon::today());
+            'patients' => Patient::with([
+                'sales' => function ($query) use ($request){
+                    if ($request->query('status') == null && $request->query('from') == null) {
+                        $query->whereDate('sales.created_at', Carbon::today());
+                    } else {
+                        if ($request->query('status') != null) $query->where('status', $request->query('status'));
+                        if ($request->query('from') != null) $query->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
+                    }
+                    
+                    //$query->where('status', $request->query('status'));
                 }
-            })->get()
+            ])->get()
         ]);
     }
 
@@ -54,6 +59,10 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'frame' => 'required',
+            'total' => 'required'
+        ]);
         $sale = Sale::create($request->all());
 
         return redirect()->route('patients.sales', $sale->exam->patient_id);
@@ -112,6 +121,11 @@ class SalesController extends Controller
         Sale::find($id)->payments()->create($request->all());
         $this->updatePaid($id);
         return redirect()->back();
+    }
+
+    public function payments($id)
+    {
+        return Sale::with('payments')->find($id);
     }
 
     public function updatePaid($id)

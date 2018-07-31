@@ -21,7 +21,7 @@
                             @endauth
                         </div>
                         <div class="brand-text d-none d-sm-inline-block d-lg-none">
-                            <strong>BD</strong>
+                            <strong><i class="fas fa-glasses"></i></strong>
                         </div>
                     </a>
                     <!-- Toggle Button-->
@@ -34,6 +34,7 @@
                 <!-- Navbar Menu -->
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     <!-- Search-->
+                    @auth
                     <li class="nav-item d-flex align-items-center">
                         <a id="search" href="#">
                             <i class="icon-search"></i>
@@ -43,15 +44,15 @@
                     <li class="nav-item dropdown">
                         <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" class="nav-link">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="badge bg-red badge-corner">{{App\Sale::whereNotIn('status', ['Entregado'])->count()}}</span>
+                            <i class="fas fa-glasses"></i>
+                            <span class="badge bg-green badge-corner">{{App\Sale::whereNotIn('status', ['Entregado'])->count()}}</span>
                         </a>
                         <ul aria-labelledby="notifications" class="dropdown-menu">
                             <li>
-                                <a rel="nofollow" href="#" class="dropdown-item">
+                                <a rel="nofollow" href="{{route('sales.index', ['status' => 'Preparando'])}}" class="dropdown-item">
                                     <div class="notification">
                                         <div class="notification-content">
-                                            <i class="fa fa-envelope bg-green"></i>{{App\Sale::where('status', 'Preparando')->count()}} Preparando</div>
+                                            <i class="fas fa-spinner fa-spin bg-orange"></i>{{App\Sale::where('status', 'Preparando')->count()}} Preparando</div>
                                         <div class="notification-time">
                                             <small>{{Carbon\Carbon::now()->format('h:i a')}}</small>
                                         </div>
@@ -59,10 +60,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a rel="nofollow" href="#" class="dropdown-item">
+                                <a rel="nofollow" href="{{route('sales.index', ['status' => 'Listo'])}}" class="dropdown-item">
                                     <div class="notification">
                                         <div class="notification-content">
-                                            <i class="fa fa-envelope bg-green"></i>{{App\Sale::where('status', 'Listo')->count()}} Listo</div>
+                                            <i class="fas fa-check bg-green"></i>{{App\Sale::where('status', 'Listo')->count()}} Listo</div>
                                         <div class="notification-time">
                                             <small>{{Carbon\Carbon::now()->format('h:i a')}}</small>
                                         </div>
@@ -71,29 +72,34 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Messages                        -->
+                    <!-- Messages-->
                     <li class="nav-item dropdown">
                         <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" class="nav-link">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-orange badge-corner">{{App\Sale::where('paid', 0)->count()}}</span>
+                            <i class="fas fa-user-clock"></i>
+                            <span class="badge bg-red badge-corner">{{App\Patient::whereHas('sales', function($query){ $query->where('paid', 0); })->count()}}</span>
                         </a>
                         <ul aria-labelledby="notifications" class="dropdown-menu">
-                            @foreach(App\Sale::where('paid', 0)->get() as $sale)
+                            @foreach(App\Patient::whereHas('sales', function($query){ $query->where('paid', 0); })->get() as $patient)
                             <li>
-                                <a rel="nofollow" href="{{route('patients.sales', $sale->exam->patient)}}" class="dropdown-item d-flex">
+                                <a rel="nofollow" href="{{route('patients.sales', $patient)}}" class="dropdown-item d-flex">
                                     <div class="msg-profile">
-                                        <img src="{{asset('theme/img/avatar-1.jpg')}}" alt="..." class="img-fluid rounded-circle">
+                                        @if($patient->gender == 'Hombre')
+                                        <i class="fas fa-male bg-red"></i>
+                                        @else
+                                        <i class="fas fa-female bg-red"></i>
+                                        @endif
                                     </div>
                                     <div class="msg-body">
-                                        <h3 class="h5">{{$sale->exam->patient->full_name}}</h3>
-                                        <span>{{number_format($sale->remaining, 2)}}</span>
+                                        <h3 class="h5">{{$patient->full_name}}</h3>
+                                        <span>{{number_format($patient->sales->sum('remaining'), 2)}}</span>
                                     </div>
                                 </a>
                             </li>
                             @endforeach
                         </ul>
                     </li>
+                    @endauth
                     <!-- Logout    -->
                     <li class="nav-item">
                         @auth

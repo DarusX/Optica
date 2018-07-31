@@ -24,6 +24,23 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label">Sexo</label>
+                        <select class="mr-3 form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender">
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                        </select>
+                        @if ($errors->has('gender'))
+                        <div class="invalid-feedback">{{ $errors->first('gender') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Fecha de nacimiento</label>
+                        <input type="text" class="mr-3 form-control datepicker {{ $errors->has('birthdate') ? 'is-invalid' : '' }}" name="birthdate">
+                        @if ($errors->has('birthdate'))
+                        <div class="invalid-feedback">{{ $errors->first('birthdate') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label">Dirección</label>
                         <input type="text" class="mr-3 form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address">
                         @if ($errors->has('address'))

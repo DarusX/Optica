@@ -75,13 +75,30 @@
             $("#modal-payment").find("input[name='payment']").attr("max", $(this).attr("data-max"));
             $("#modal-payment").modal("toggle")
         })
+        $(".payments").click(function(event){
+            event.preventDefault()
+            $("#modal-payments").modal("toggle")
+            $("#modal-payments").find("tbody").empty()
+            $.ajax({
+                url: $(this).attr("href"),
+                success: function(data){
+                    data.payments.forEach(payment => {
+                        $("#modal-payments").find("tbody").append($("<tr>").append($("<td>").html(payment.payment.toFixed(2))).append($("<td>").html(payment.created_at)))
+                    });
+                }
+            })
+        })
         $(".status").click(function(event){
             event.preventDefault()
             $("#modal-status").find("form").attr("action", $(this).attr("href"));
             $("#modal-status").modal("toggle")
         })
         $(".datepicker").datepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0",
+            maxDate: 0
         })
     </script>
 </body>
