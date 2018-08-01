@@ -22,19 +22,17 @@ class SalesController extends Controller
      */
     public function index(Request $request)
     {
+        $sales = new Sale();
+
+        if ($request->query('status') == null && $request->query('from') == null) {
+            $sales->whereDate('sales.created_at', Carbon::today());
+        } else {
+            if ($request->query('status') != null) $sales->where('status', $request->query('status'));
+            if ($request->query('from') != null) $sales->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
+        }
+
         return view('sales.index')->with([
-            'patients' => Patient::with([
-                'sales' => function ($query) use ($request){
-                    if ($request->query('status') == null && $request->query('from') == null) {
-                        $query->whereDate('sales.created_at', Carbon::today());
-                    } else {
-                        if ($request->query('status') != null) $query->where('status', $request->query('status'));
-                        if ($request->query('from') != null) $query->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
-                    }
-                    
-                    //$query->where('status', $request->query('status'));
-                }
-            ])->get()
+            'sales' => $sales->get()
         ]);
     }
 

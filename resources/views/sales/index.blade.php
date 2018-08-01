@@ -28,11 +28,9 @@
             </div>
         </div>
         <div class="row">
-            @foreach($patients as $patient)
-            @foreach($patient->sales as $sale)
+            @foreach($sales as $sale)
             @component('sales.sale', ['sale' => $sale])
             @endcomponent
-            @endforeach 
             @endforeach 
         </div>
     </div>

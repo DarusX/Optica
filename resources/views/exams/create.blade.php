@@ -83,6 +83,27 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for=""><strong>Adición</strong></label>
+                                        <input type="number" step="0.01" name="addition" class="form-control">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for=""><strong>Alt</strong></label>
+                                        <input type="number" step="0.01" name="alt" class="form-control">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for=""><strong>Distancia pupilar</strong></label>
+                                        <input type="number" step="0.01" name="pupilary_distance" class="form-control">
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="form-group">

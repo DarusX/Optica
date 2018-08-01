@@ -83,7 +83,7 @@
                 url: $(this).attr("href"),
                 success: function(data){
                     data.payments.forEach(payment => {
-                        $("#modal-payments").find("tbody").append($("<tr>").append($("<td>").html(payment.payment.toFixed(2))).append($("<td>").html(payment.created_at)))
+                        $("#modal-payments").find("tbody").append($("<tr>").append($("<td>").html(Number.parseFloat(payment.payment).toFixed(2))).append($("<td>").html(payment.created_at)))
                     });
                 }
             })

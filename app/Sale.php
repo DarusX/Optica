@@ -17,6 +17,11 @@ class Sale extends Model
         });
     }
 
+    public function newQuery($excludeDelete = true)
+    {
+        return parent::newQuery()->where('branch_id', Auth::user()->branch_id);
+    }
+
     protected $fillable = [
         'frame', 'notes', 'total', 'paid', 'status', 'material_id', 'exam_id', 'created_by', 'branch_id'
     ];
