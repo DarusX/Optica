@@ -51,6 +51,7 @@
     <script src="{{asset('theme/assets/jquery.cookie/jquery.cookie.js')}}"> </script>
     <script src="{{asset('theme/assets/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="{{asset('js/datepicker.es.js')}}"></script>
     <!-- Main File-->
     <script src="{{asset('theme/js/front.js')}}"></script>
     <script>
@@ -77,13 +78,21 @@
         })
         $(".payments").click(function(event){
             event.preventDefault()
+            $(".loading").show()
             $("#modal-payments").modal("toggle")
+            $("#modal-payments").find(".table").hide()
             $("#modal-payments").find("tbody").empty()
             $.ajax({
                 url: $(this).attr("href"),
                 success: function(data){
+                    $(".loading").hide()
                     data.payments.forEach(payment => {
-                        $("#modal-payments").find("tbody").append($("<tr>").append($("<td>").html(Number.parseFloat(payment.payment).toFixed(2))).append($("<td>").html(payment.created_at)))
+                        $("#modal-payments").find(".table").show()
+                        $("#modal-payments").find("tbody").append($("<tr>").append([
+                            $("<td>").html(Number.parseFloat(payment.payment).toFixed(2)),
+                            $("<td>").html(payment.created_at),
+                            $("<td>").html(payment.creator.name)
+                        ]))
                     });
                 }
             })

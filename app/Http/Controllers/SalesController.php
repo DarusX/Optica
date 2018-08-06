@@ -22,18 +22,24 @@ class SalesController extends Controller
      */
     public function index(Request $request)
     {
-        $sales = new Sale();
+        $sales = null;
 
-        if ($request->query('status') == null && $request->query('from') == null) {
-            $sales->whereDate('sales.created_at', Carbon::today());
+        if (empty($_REQUEST['status']) && empty($_REQUEST['from'])) {
+        $sales = Sale::whereDate('created_at', Carbon::today());
         } else {
-            if ($request->query('status') != null) $sales->where('status', $request->query('status'));
-            if ($request->query('from') != null) $sales->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
+            if ($request->query('status') != null) $sales = Sale::where('status', $request->query('status'));
+            if ($request->query('from') != null) $sales = Sale::whereDate('created_at', '>=', $request->query('from'))->whereDate('created_at', '<=', $request->query('to'));
         }
-
         return view('sales.index')->with([
             'sales' => $sales->get()
         ]);
+        /*
+        else {
+            if ($request->query('status') != null) $sales->where('status', $request->query('status'));
+            if ($request->query('from') != null) $sales->whereDate('sales.created_at', '>=', $request->query('from'))->whereDate('sales.created_at', '<=', $request->query('to'));
+        }
+        return $request->query();
+        */
     }
 
     /**
@@ -123,7 +129,7 @@ class SalesController extends Controller
 
     public function payments($id)
     {
-        return Sale::with('payments')->find($id);
+        return Sale::with('payments.creator')->find($id);
     }
 
     public function updatePaid($id)

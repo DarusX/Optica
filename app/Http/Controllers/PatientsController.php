@@ -23,7 +23,7 @@ class PatientsController extends Controller
         $patients;
 
         if($request->query('query') != null) $patients = Patient::search($request->query('query'));
-        else $patients = Patient::paginate(20);
+        else $patients = Patient::all();
         return view('patients.index')->with([
             'patients' => $patients
         ]);
@@ -55,7 +55,7 @@ class PatientsController extends Controller
         
         $patient = Patient::create($request->all());
 
-        Session::flash('msg', 'Paciente registrado');
+        Session::flash('success', 'Paciente registrado');
 
         return redirect()->route('patients.show', $patient);
     }
@@ -95,7 +95,9 @@ class PatientsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('patients.edit')->with([
+            'patient' => Patient::find($id)
+        ]);
     }
 
     /**
@@ -107,7 +109,8 @@ class PatientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Patient::find($id)->update($request->all());
+        Session::flash('success', 'Paciente actualizado');
     }
 
     /**

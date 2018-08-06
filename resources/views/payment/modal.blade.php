@@ -7,12 +7,14 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-center">
+                <i class="fas fa-spinner fa-5x fa-spin loading" style="padding-top: 20px; padding-bottom: 20px;"></i>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Pago</th>
                             <th>Fecha</th>
+                            <th>Recibió</th>
                         </tr>
                     </thead>
                     <tbody>

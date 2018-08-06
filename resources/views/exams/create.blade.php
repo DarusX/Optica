@@ -22,8 +22,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    OD - OI<br>
-                                    <small>Oculus dexter</small>
+                                    Izquierdo
                                 </th>
                                 <td>
                                     <div class="form-group">
@@ -43,8 +42,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    OS - OD<br>
-                                    <small>Oculus sinister</small>
+                                    Derecho
                                 </th>
                                 <td>
                                     <div class="form-group">
@@ -64,8 +62,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    OU - OA <br>
-                                    <small>Oculus uterque</small>
+                                    Ambos
                                 </th>
                                 <td>
                                     <div class="form-group">

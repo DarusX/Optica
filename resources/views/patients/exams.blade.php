@@ -16,63 +16,8 @@
     <div class="container-fluid">
         <div class="row">
             @foreach($patient->exams as $exam)
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">{{$exam->created_at->format('d M Y')}}</h3>
-                        <div class="badge badge-rounded bg-gray">{{$exam->creator->name}}</div>
-                        @if(count($exam->sales))
-                        <div class="badge badge-rounded bg-blue">Con venta</div>
-                        @endif
-                    </div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Esfera</th>
-                                    <th>Cilindro</th>
-                                    <th>Eje</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        OD - OI<br>
-                                        <small>Oculus dexter</small>
-                                    </th>
-                                    <td>{{$exam->od_sphere}}</td>
-                                    <td>{{$exam->od_cylinder}}</td>
-                                    <td>{{$exam->od_axis}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        OS - OD
-                                        <br>
-                                        <small>Oculus sinister</small>
-                                    </th>
-                                    <td>{{$exam->os_sphere}}</td>
-                                    <td>{{$exam->os_cylinder}}</td>
-                                    <td>{{$exam->os_axis}}</td>
-                                   
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        OU - OA
-                                        <br>
-                                        <small>Oculus uterque</small>
-                                    </th>
-                                    <td>{{$exam->ou_sphere}}</td>
-                                    <td>{{$exam->ou_cylinder}}</td>
-                                    <td>{{$exam->ou_axis}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="{{route('sales.create', $exam)}}" class="btn btn-md btn-success">
-                            <i class="fa fa-paint-brush" aria-hidden="true"></i> Configurar Venta</a>
-                    </div>
-                </div>
-            </div>
+                @component('exams.exam', ['exam' => $exam])
+                @endcomponent
             @endforeach
         </div>
     </div>

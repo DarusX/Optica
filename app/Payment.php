@@ -19,4 +19,9 @@ class Payment extends Model
     protected $fillable = [
         'payment', 'created_by', 'sale_id'
     ];
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

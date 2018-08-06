@@ -43,5 +43,5 @@ Route::prefix('/sales')->group(function(){
 });
 
 Route::resource('sales', 'SalesController')->except([
-    'create'
+    'create',
 ]);
