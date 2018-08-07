@@ -111,6 +111,7 @@ class PatientsController extends Controller
     {
         Patient::find($id)->update($request->all());
         Session::flash('success', 'Paciente actualizado');
+        return redirect()->route('patients.show', $id);
     }
 
     /**
@@ -121,6 +122,7 @@ class PatientsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Patient::destroy($id);
+        Session::flash('success', 'Paciente eliminado');
     }
 }

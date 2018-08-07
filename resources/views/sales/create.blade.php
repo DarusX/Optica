@@ -37,9 +37,7 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        OD - OI
-                                        <br>
-                                        <small>Oculus dexter</small>
+                                       Derecho
                                     </th>
                                     <td>{{$exam->od_sphere}}</td>
                                     <td>{{$exam->od_cylinder}}</td>
@@ -47,9 +45,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        OS - OD
-                                        <br>
-                                        <small>Oculus sinister</small>
+                                        Izquierdo
                                     </th>
                                     <td>{{$exam->os_sphere}}</td>
                                     <td>{{$exam->os_cylinder}}</td>
@@ -57,13 +53,17 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        OU - OA
-                                        <br>
-                                        <small>Oculus uterque</small>
+                                        Ambos
                                     </th>
                                     <td>{{$exam->ou_sphere}}</td>
                                     <td>{{$exam->ou_cylinder}}</td>
                                     <td>{{$exam->ou_axis}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td><strong>Adición:</strong> {{$exam->ou_sphere}}</td>
+                                    <td><strong>Alt:</strong> {{$exam->ou_cylinder}}</td>
+                                    <td><strong>Distancia pupilar:</strong> {{$exam->ou_axis}}</td>
                                 </tr>
                             </tbody>
                         </table>

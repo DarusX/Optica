@@ -7,8 +7,9 @@
                 <h3 class="h4">Edición de Paciente</h3>
             </div>
             <div class="card-body">
-                <form action="{{route('patients.store')}}" method="post">
+                <form action="{{route('patients.update', $patient)}}" method="post">
                     {{csrf_field()}}
+                    {{method_field('PUT')}}
                     <div class="form-group">
                         <label class="form-control-label">Nombre</label>
                         <input type="text" class="mr-3 form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{$patient->name}}">

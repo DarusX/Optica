@@ -11,48 +11,21 @@
         </div>
     </div>
     <!-- Sidebar Navidation Menus-->
-    <span class="heading">Main</span>
+    <span class="heading">Principal</span>
     <ul class="list-unstyled">
-        <li class="active">
-            <a href="index.html">
-                <i class="icon-home"></i>Home </a>
-        </li>
+        <li><a href="/home"><i class="icon-home"></i>Incio </a></li>
         <li>
-            <a href="#patients-menu" aria-expanded="false" data-toggle="collapse">
-                <i class="icon-interface-windows"></i>Pacientes</a>
+            <a href="#patients-menu" aria-expanded="false" data-toggle="collapse"><i class="icon-interface-windows"></i>Pacientes</a>
             <ul id="patients-menu" class="collapse list-unstyled ">
-                <li>
-                    <a href="{{route('patients.index')}}">Todos</a>
-                </li>
-                <li>
-                    <a href="{{route('patients.create')}}">Registrar</a>
-                </li>
+                <li><a href="{{route('patients.index')}}">Todos</a></li>
+                <li><a href="{{route('patients.create')}}">Registrar</a></li>
             </ul>
         </li>
-        <li>
-            <a href="{{route('sales.index')}}">
-                <i class="icon-interface-windows"></i>Ventas
-            </a>
-        </li>
+        
     </ul>
-    <span class="heading">Extras</span>
+    <span class="heading">Reportes</span>
     <ul class="list-unstyled">
-        <li>
-            <a href="#">
-                <i class="icon-flask"></i>Demo </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="icon-screen"></i>Demo </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="icon-mail"></i>Demo </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="icon-picture"></i>Demo </a>
-        </li>
+        <li><a href="{{route('sales.index')}}"><i class="icon-interface-windows"></i>Ventas</a></li>
     </ul>
     @endauth
 </nav>

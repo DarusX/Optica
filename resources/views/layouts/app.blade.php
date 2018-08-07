@@ -70,6 +70,16 @@
                 }
             })
         })
+        $(".destroy").click(function(event){
+            event.preventDefault()
+            $.ajax({
+                url: $(this).attr("href"),
+                method: "DELETE",
+                success: function(data){
+                    location.reload()
+                }
+            })
+        })
         $(".payment").click(function(event){
             event.preventDefault()
             $("#modal-payment").find("form").attr("action", $(this).attr("href"));
@@ -101,6 +111,55 @@
             event.preventDefault()
             $("#modal-status").find("form").attr("action", $(this).attr("href"));
             $("#modal-status").modal("toggle")
+        })
+        $(".exam").click(function(event){
+            event.preventDefault()
+            $(".loading").show()
+            $("#modal-exam .table").hide()
+            $("#modal-exam").find("tbody").empty()
+            $("#modal-exam").modal("toggle")
+            $.ajax({
+                url: $(this).attr("href"),
+                success: function(data){
+                    $(".loading").hide()
+                    $("#modal-exam .table").show()
+                    $("#modal-exam").find("tbody").append([
+                        $("<tr>").append([
+                            $("<th>", {attr:{scope: "row"}}).html("Derecho"),
+                            $("<td>").html(data.exam.od_sphere),
+                            $("<td>").html(data.exam.od_cylinder),
+                            $("<td>").html(data.exam.od_axis)
+                        ]),
+                        $("<tr>").append([
+                            $("<th>", {attr:{scope: "row"}}).html("Izquierdo"),
+                            $("<td>").html(data.exam.os_sphere),
+                            $("<td>").html(data.exam.os_cylinder),
+                            $("<td>").html(data.exam.os_axis)
+                        ]),
+                        $("<tr>").append([
+                            $("<th>", {attr:{scope: "row"}}).html("Ambos"),
+                            $("<td>").html(data.exam.ou_sphere),
+                            $("<td>").html(data.exam.ou_cylinder),
+                            $("<td>").html(data.exam.ou_axis)
+                        ]),
+                        $("<tr>").append([
+                            $("<th>", {attr:{scope: "row"}}),
+                            $("<td>").append([
+                                $("<strong>").html("Adición: "),
+                                data.exam.addition
+                            ]),
+                            $("<td>").append([
+                                $("<strong>").html("Alt: "),
+                                data.exam.alt
+                            ]),
+                            $("<td>").append([
+                                $("<strong>").html("Distancia pupilar: "),
+                                data.exam.pupilary_distance
+                            ]),
+                        ]),
+                    ])
+                }
+            })
         })
         $(".datepicker").datepicker({
             dateFormat: "yy-mm-dd",

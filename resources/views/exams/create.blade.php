@@ -22,7 +22,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    Izquierdo
+                                    Derecho
                                 </th>
                                 <td>
                                     <div class="form-group">
@@ -42,7 +42,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    Derecho
+                                    Izquierda
                                 </th>
                                 <td>
                                     <div class="form-group">

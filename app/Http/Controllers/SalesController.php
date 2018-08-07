@@ -141,4 +141,9 @@ class SalesController extends Controller
             ]);
         }
     }
+
+    public function exam($id)
+    {
+        return Sale::with('exam')->find($id);
+    }
 }

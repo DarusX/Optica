@@ -11,22 +11,22 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Teléfono</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($patients as $patient)
+                        @forelse($patients as $patient)
                         <tr>
                             <td>{{$patient->full_name}}</td>
-                            <td>{{$patient->phone}}</td>
                             <td>
                                 <a href="{{route('patients.show', $patient)}}" class="btn btn-xs btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                 <a href="{{route('patients.edit', $patient)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a href="{{route('patients.edit', $patient)}}" class="btn btn-xs btn-danger destroy"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                <a href="{{route('patients.destroy', $patient)}}" class="btn btn-xs btn-danger destroy"><i class="fa fa-times" aria-hidden="true"></i></a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                            <td>No se encontró ningun registro</td>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

@@ -40,6 +40,7 @@ Route::resource('exams', 'ExamsController')->except([
 Route::prefix('/sales')->group(function(){
     Route::post('/{id}/payment', 'SalesController@payment')->name('sales.payment');
     Route::get('/{id}/payments', 'SalesController@payments')->name('sales.payments');
+    Route::get('/{id}/exam', 'SalesController@exam')->name('sales.exam');
 });
 
 Route::resource('sales', 'SalesController')->except([

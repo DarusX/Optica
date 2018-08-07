@@ -31,4 +31,6 @@
 @endcomponent
 @component('components.modals.payments')
 @endcomponent
+@component('components.modals.exam')
+@endcomponent
 @endsection

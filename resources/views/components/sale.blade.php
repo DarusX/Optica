@@ -22,7 +22,7 @@
             <a href="{{route('sales.payments', $sale)}}" data-status="{{$sale->status}}" class="btn btn-primary payments">
                 <i class="fas fa-undo"></i> Pagos
             </a>
-            <a href="#" class="btn btn-primary exam">
+            <a href="{{route('sales.exam', $sale)}}" class="btn btn-primary exam">
                 <i class="fas fa-font"></i> Examen
             </a>
         </div>

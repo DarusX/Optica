@@ -20,7 +20,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">
-                            Izquierdo
+                            Derecho
                         </th>
                         <td>{{$exam->od_sphere}}</td>
                         <td>{{$exam->od_cylinder}}</td>
@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            Derecho
+                            Izquierdo
                         </th>
                         <td>{{$exam->os_sphere}}</td>
                         <td>{{$exam->os_cylinder}}</td>
