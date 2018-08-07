@@ -10,7 +10,7 @@
             <p><strong>Pagado: </strong>{{number_format($sale->payments->sum('payment'), 2)}}</p>
             <p><strong>Restante: </strong>{{number_format($sale->remaining, 2)}}</p>
             @if($sale->payments->sum('payment') < $sale->total)
-            <a href="{{route('sales.payment', $sale)}}" data-id="{{$sale->id}}" data-max="{{number_format($sale->remaining, 2)}}" class="btn btn-warning payment">
+            <a href="{{route('sales.payment', $sale)}}" data-id="{{$sale->id}}" data-max="{{$sale->remaining}}" class="btn btn-warning payment">
                 <i class="fas fa-coins"></i> Abono
             </a>
             @else
@@ -22,8 +22,9 @@
             <a href="{{route('sales.payments', $sale)}}" data-status="{{$sale->status}}" class="btn btn-primary payments">
                 <i class="fas fa-undo"></i> Pagos
             </a>
+            <a href="#" class="btn btn-primary exam">
+                <i class="fas fa-font"></i> Examen
+            </a>
         </div>
     </div>
 </div>
-@component('payment.modal')
-@endcomponent

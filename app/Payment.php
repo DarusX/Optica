@@ -13,11 +13,17 @@ class Payment extends Model
 
         self::creating(function ($model){
             $model->created_by = Auth::id();
+            $model->branch_id = Auth::user()->branch_id;
         });
     }
 
+    public function newQuery($excludeDelete = true)
+    {
+        return parent::newQuery()->where('branch_id', Auth::user()->branch_id);
+    }
+
     protected $fillable = [
-        'payment', 'created_by', 'sale_id'
+        'payment', 'created_by', 'sale_id', 'branch_id'
     ];
 
     public function creator()

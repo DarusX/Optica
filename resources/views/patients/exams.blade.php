@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
             @foreach($patient->exams as $exam)
-                @component('exams.exam', ['exam' => $exam])
+                @component('components.exam', ['exam' => $exam])
                 @endcomponent
             @endforeach
         </div>

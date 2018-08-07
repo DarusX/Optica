@@ -18,10 +18,12 @@ class CreatePaymentsTable extends Migration
             $table->double('payment');
             $table->integer('sale_id')->unsigned();
             $table->integer('created_by')->unsigned();
+            $table->integer('branch_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('sale_id')->references('id')->on('sales');
             $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('branch_id')->references('id')->on('branches');
         });
     }
 
