@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Fabián Montero',
                 'username' => 'fabian.montero',
                 'password' => bcrypt('123456')
-            ]
+            ],
         ]);
 
         Material::create([

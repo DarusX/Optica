@@ -16,21 +16,21 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->tinyInteger('od_axis')->nullable();
-            $table->tinyInteger('od_cylinder')->nullable();
-            $table->tinyInteger('od_sphere')->nullable();
+            $table->double('od_axis')->nullable();
+            $table->double('od_cylinder')->nullable();
+            $table->double('od_sphere')->nullable();
             
-            $table->tinyInteger('os_axis')->nullable();
-            $table->tinyInteger('os_cylinder')->nullable();
-            $table->tinyInteger('os_sphere')->nullable();
+            $table->double('os_axis')->nullable();
+            $table->double('os_cylinder')->nullable();
+            $table->double('os_sphere')->nullable();
             
-            $table->tinyInteger('ou_axis')->nullable();
-            $table->tinyInteger('ou_cylinder')->nullable();
-            $table->tinyInteger('ou_sphere')->nullable();
+            $table->double('ou_axis')->nullable();
+            $table->double('ou_cylinder')->nullable();
+            $table->double('ou_sphere')->nullable();
 
-            $table->tinyInteger('addition')->nullable();
-            $table->tinyInteger('alt')->nullable();
-            $table->tinyInteger('pupilary_distance')->nullable();
+            $table->double('addition')->nullable();
+            $table->double('alt')->nullable();
+            $table->double('pupilary_distance')->nullable();
 
             $table->integer('patient_id')->unsigned();
             $table->integer('created_by')->unsigned();
