@@ -22,6 +22,26 @@
                         <tbody>
                             <tr>
                                 <th scope="row">
+                                    Ambos
+                                </th>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" step="0.01" class="form-control" name="ou_sphere">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" step="0.01" class="form-control" name="ou_cylinder">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" step="0.01" class="form-control" name="ou_axis">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
                                     Derecho
                                 </th>
                                 <td>
@@ -57,26 +77,6 @@
                                 <td>
                                     <div class="form-group">
                                         <input type="number" step="0.01" class="form-control" name="os_axis">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Ambos
-                                </th>
-                                <td>
-                                    <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control" name="ou_sphere">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control" name="ou_cylinder">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <input type="number" step="0.01" class="form-control" name="ou_axis">
                                     </div>
                                 </td>
                             </tr>

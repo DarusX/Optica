@@ -20,34 +20,34 @@
                 <tbody>
                     <tr>
                         <th scope="row">
+                            Ambos
+                        </th>
+                        <td>{{signedNumber($exam->ou_sphere)}}</td>
+                        <td>{{signedNumber($exam->ou_cylinder)}}</td>
+                        <td>{{signedNumber($exam->ou_axis)}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
                             Derecho
                         </th>
-                        <td>{{$exam->od_sphere}}</td>
-                        <td>{{$exam->od_cylinder}}</td>
-                        <td>{{$exam->od_axis}}</td>
+                        <td>{{signedNumber($exam->od_sphere)}}</td>
+                        <td>{{signedNumber($exam->od_cylinder)}}</td>
+                        <td>{{signedNumber($exam->od_axis)}}</td>
                     </tr>
                     <tr>
                         <th scope="row">
                             Izquierdo
                         </th>
-                        <td>{{$exam->os_sphere}}</td>
-                        <td>{{$exam->os_cylinder}}</td>
-                        <td>{{$exam->os_axis}}</td>
+                        <td>{{signedNumber($exam->os_sphere)}}</td>
+                        <td>{{signedNumber($exam->os_cylinder)}}</td>
+                        <td>{{signedNumber($exam->os_axis)}}</td>
                         
                     </tr>
                     <tr>
-                        <th scope="row">
-                            Ambos
-                        </th>
-                        <td>{{$exam->ou_sphere}}</td>
-                        <td>{{$exam->ou_cylinder}}</td>
-                        <td>{{$exam->ou_axis}}</td>
-                    </tr>
-                    <tr>
                         <th scope="row"></th>
-                        <td><strong>Adición: </strong>{{$exam->addition}}</td>
-                        <td><strong>Alt: </strong>{{$exam->alt}}</td>
-                        <td><strong>Distancia pupilar: </strong>{{$exam->pupilary_distance}}</td>
+                        <td><strong>Adición: </strong>{{signedNumber($exam->addition)}}</td>
+                        <td><strong>Alt: </strong>{{signedNumber($exam->alt)}}</td>
+                        <td><strong>Distancia pupilar: </strong>{{signedNumber($exam->pupilary_distance)}}</td>
                     </tr>
                 </tbody>
             </table>

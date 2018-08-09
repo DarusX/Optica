@@ -126,35 +126,35 @@
                     $("#modal-exam").find("tbody").append([
                         $("<tr>").append([
                             $("<th>", {attr:{scope: "row"}}).html("Derecho"),
-                            $("<td>").html(data.exam.od_sphere),
-                            $("<td>").html(data.exam.od_cylinder),
-                            $("<td>").html(data.exam.od_axis)
+                            $("<td>").html(signedNumber(data.exam.od_sphere)),
+                            $("<td>").html(signedNumber(data.exam.od_cylinder)),
+                            $("<td>").html(signedNumber(data.exam.od_axis))
                         ]),
                         $("<tr>").append([
                             $("<th>", {attr:{scope: "row"}}).html("Izquierdo"),
-                            $("<td>").html(data.exam.os_sphere),
-                            $("<td>").html(data.exam.os_cylinder),
-                            $("<td>").html(data.exam.os_axis)
+                            $("<td>").html(signedNumber(data.exam.os_sphere)),
+                            $("<td>").html(signedNumber(data.exam.os_cylinder)),
+                            $("<td>").html(signedNumber(data.exam.os_axis))
                         ]),
                         $("<tr>").append([
                             $("<th>", {attr:{scope: "row"}}).html("Ambos"),
-                            $("<td>").html(data.exam.ou_sphere),
-                            $("<td>").html(data.exam.ou_cylinder),
-                            $("<td>").html(data.exam.ou_axis)
+                            $("<td>").html(signedNumber(data.exam.ou_sphere)),
+                            $("<td>").html(signedNumber(data.exam.ou_cylinder)),
+                            $("<td>").html(signedNumber(data.exam.ou_axis))
                         ]),
                         $("<tr>").append([
                             $("<th>", {attr:{scope: "row"}}),
                             $("<td>").append([
                                 $("<strong>").html("Adición: "),
-                                data.exam.addition
+                                signedNumber(data.exam.addition)
                             ]),
                             $("<td>").append([
                                 $("<strong>").html("Alt: "),
-                                data.exam.alt
+                                signedNumber(data.exam.alt)
                             ]),
                             $("<td>").append([
                                 $("<strong>").html("Distancia pupilar: "),
-                                data.exam.pupilary_distance
+                                signedNumber(data.exam.pupilary_distance)
                             ]),
                         ]),
                     ])
@@ -168,6 +168,10 @@
             yearRange: "-100:+0",
             maxDate: 0
         })
+        function signedNumber($param){
+            if($param > 0) return "+" + $param
+            return $param
+        }
     </script>
 </body>
 
