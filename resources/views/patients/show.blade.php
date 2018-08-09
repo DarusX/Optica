@@ -3,21 +3,22 @@
     <div class="container-fluid">
         <div class="row bg-white has-shadow">
             <!-- Item -->
-            <div class="col-xl-6 col-sm-6">
+            <div class="col-md-4">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="title">
                         <span>Nombre <br>
-                            <strong>{{$patient->full_name}}</strong></span>
+                            <strong>{{$patient->full_name}}</strong>
+                        </span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-md-4">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
                         <i class="fas fa-user"></i>
@@ -26,60 +27,64 @@
                         <span>Sexo<br>
                             <strong>{{$patient->gender}}</strong></span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-md-4">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
                         <i class="fas fa-calendar"></i>
                     </div>
                     <div class="title">
                         <span>Edad<br>
-                            <strong>{{$patient->age}}</strong></span>
+                            <strong>{{$patient->age}}</strong>
+                        </span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row bg-white has-shadow">
-            <!-- Item -->
             @if($patient->cell_phone)
-            <div class="col-xl-6 col-sm-6">
+            <div class="col-md-4">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
                         <i class="fas fa-mobile"></i>
                     </div>
                     <div class="title">
                         <span>Teléfono celular<br>
-                            <strong>{{$patient->cell_phone}}</strong></span>
+                            <strong>{{$patient->cell_phone}}</strong>
+                        </span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
             @endif
             @if($patient->phone)
-            <div class="col-xl-6 col-sm-6">
+            <div class="col-md-4">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
                         <i class="fas fa-phone"></i>
                     </div>
                     <div class="title">
                         <span>Teléfono<br>
-                            <strong>{{$patient->phone}}</strong></span>
+                            <strong>{{$patient->phone}}</strong>
+                        </span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
             @endif
+        </div>
+        <div class="row bg-white has-shadow">
             <div class="col-xl-12 col-sm-12">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
@@ -87,30 +92,34 @@
                     </div>
                     <div class="title">
                         <span>Dirección<br>
-                            <strong>{{$patient->address}}</strong></span>
+                            <strong>{{$patient->address}}</strong>
+                        </span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            @if($patient->work)
+        </div>
+        @if($patient->work)
+        <div class="row bg-white has-shadow">
             <div class="col-xl-12 col-sm-12">
                 <div class="item d-flex align-items-center">
                     <div class="icon bg-blue">
-                        <i class="icon-user"></i>
+                        <i class="fas fa-building"></i>
                     </div>
                     <div class="title">
                         <span>Lugar de trabajo<br>
-                            <strong>{{$patient->work}}</strong></span>
+                            <strong>{{$patient->work}}</strong>
+                        </span>
                         <div class="progress">
-                            <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endif
         </div>
+        @endif
     </div>
 </section>
 <section class="dashboard-header">

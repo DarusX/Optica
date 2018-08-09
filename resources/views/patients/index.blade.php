@@ -1,5 +1,10 @@
 @extends('layouts.app') 
 @section('content')
+<header class="page-header">
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Pacientes</h2>
+    </div>
+</header>
 <section>
     <div class="col-lg-12">
         <div class="card">

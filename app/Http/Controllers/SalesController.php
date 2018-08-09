@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use App\Sale;
 use App\Exam;
 use App\Material;
@@ -117,7 +118,8 @@ class SalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Sale::destroy($id);
+        Session::flash('success', 'Venta eliminada');
     }
 
     public function payment(Request $request, $id)

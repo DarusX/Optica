@@ -1,5 +1,10 @@
 @extends('layouts.app') 
 @section('content')
+<header class="page-header">
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Pacientes</h2>
+    </div>
+</header>
 <section>
     <div class="col-lg-12">
         <div class="card">
@@ -11,7 +16,7 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label class="form-control-label">Nombre</label>
-                        <input type="text" class="mr-3 form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{old('name')}}">
+                        <input type="text" class="mr-3 form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{old('name')}}" autofocus>
                         @if ($errors->has('name'))
                         <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                         @endif

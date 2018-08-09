@@ -26,6 +26,11 @@
     <span class="heading">Reportes</span>
     <ul class="list-unstyled">
         <li><a href="{{route('sales.index')}}"><i class="icon-interface-windows"></i>Ventas</a></li>
+        <li><a href="{{route('payments.index')}}"><i class="icon-interface-windows"></i>Pagos</a></li>
+    </ul>
+    <span class="heading">Inventario</span>
+    <ul class="list-unstyled">
+        <li><a href="{{route('bases.index')}}"><i class="icon-interface-windows"></i>Bases</a></li>
     </ul>
     @endauth
 </nav>

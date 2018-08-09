@@ -37,6 +37,14 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">
+                                        Ambos
+                                    </th>
+                                    <td>{{$exam->ou_sphere}}</td>
+                                    <td>{{$exam->ou_cylinder}}</td>
+                                    <td>{{$exam->ou_axis}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
                                        Derecho
                                     </th>
                                     <td>{{$exam->od_sphere}}</td>
@@ -50,14 +58,6 @@
                                     <td>{{$exam->os_sphere}}</td>
                                     <td>{{$exam->os_cylinder}}</td>
                                     <td>{{$exam->os_axis}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Ambos
-                                    </th>
-                                    <td>{{$exam->ou_sphere}}</td>
-                                    <td>{{$exam->ou_cylinder}}</td>
-                                    <td>{{$exam->ou_axis}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row"></th>

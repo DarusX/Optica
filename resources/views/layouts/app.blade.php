@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{asset('theme/css/style.blue.css')}}" id="theme-stylesheet">
+    <!--Toastr-->
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
+    <!--DataTables-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{asset('theme/css/custom.css')}}">
     <!-- Favicon-->
@@ -52,6 +56,8 @@
     <script src="{{asset('theme/assets/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="{{asset('js/datepicker.es.js')}}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!-- Main File-->
     <script src="{{asset('theme/js/front.js')}}"></script>
     <script>
@@ -72,13 +78,19 @@
         })
         $(".destroy").click(function(event){
             event.preventDefault()
-            $.ajax({
-                url: $(this).attr("href"),
-                method: "DELETE",
-                success: function(data){
-                    location.reload()
-                }
-            })
+            if(confirm("¿Desea eliminar?")){
+                $.ajax({
+                    url: $(this).attr("href"),
+                    method: "DELETE",
+                    success: function(data){
+                        location.reload()
+                    },
+                    error: function(data){
+                        toastr.error("<strong>Error: </strong>Consulte al administrador")
+                        new Audio("{{asset('sounds/error.mp3')}}").play()
+                    }
+                })
+            }
         })
         $(".payment").click(function(event){
             event.preventDefault()
@@ -100,16 +112,17 @@
                         $("#modal-payments").find(".table").show()
                         $("#modal-payments").find("tbody").append($("<tr>").append([
                             $("<td>").html(Number.parseFloat(payment.payment).toFixed(2)),
-                            $("<td>").html(payment.created_at),
+                            $("<td>").html(new Date(payment.created_at).toDateString()),
                             $("<td>").html(payment.creator.name)
                         ]))
-                    });
-                }
+                    })
+                },
             })
         })
         $(".status").click(function(event){
             event.preventDefault()
             $("#modal-status").find("form").attr("action", $(this).attr("href"));
+            $("#modal-status").find("select").val($(this).attr("data-status"));
             $("#modal-status").modal("toggle")
         })
         $(".exam").click(function(event){
@@ -168,11 +181,25 @@
             yearRange: "-100:+0",
             maxDate: 0
         })
+        $(".table").not(".modal .table").DataTable({
+            paging: false,
+            searching: false
+        })
         function signedNumber($param){
-            if($param > 0) return "+" + $param
-            return $param
+            if($param > 0) return "+" + Number.parseFloat($param).toFixed(2)
+            if($param == 0) return $param
+            if($param < 0) return parseFloat($param).toFixed(2)
+        }
+        toastr.options = {
+            positionClass: "toast-bottom-right",
         }
     </script>
+    @if(Session::has('success'))
+    <script>
+        toastr.success("{{Session::get('success')}}")
+        new Audio("{{asset('sounds/success.mp3')}}").play()
+    </script>
+    @endif
 </body>
 
 </html>

@@ -47,4 +47,7 @@ Route::resource('sales', 'SalesController')->except([
     'create',
 ]);
 
+Route::resource('bases', 'BasesController')->except([
+]);
+
 Route::resource('payments', 'PaymentsController');

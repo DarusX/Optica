@@ -2,30 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Base;
 use Illuminate\Http\Request;
-use App\Payment;
-use Carbon\Carbon;
+use Session;
 
-class PaymentsController extends Controller
+class BasesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        
-        $payments = null;
-
-        if (empty($_REQUEST['from'])) {
-            $payments = Payment::whereDate('created_at', Carbon::today());
-        } else {
-            $payments = Payment::whereDate('created_at', '>=', $request->query('from'))->whereDate('created_at', '<=', $request->query('to'));
-        }
-
-        return view('payments.index')->with([
-            'payments' => $payments->get()
+        return view('bases.index')->with([
+            'bases' => Base::all()
         ]);
     }
 
@@ -47,16 +38,18 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Base::create($request->all());
+        Session::flash('success', 'Base registrada');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Base  $base
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Base $base)
     {
         //
     }
@@ -64,10 +57,10 @@ class PaymentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Base  $base
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Base $base)
     {
         //
     }
@@ -76,21 +69,34 @@ class PaymentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Base  $base
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $base = Base::find($id);
+        switch ($request->type) {
+            case 'plus':
+                $base->quantity += $request->quantity;
+                break;
+            case 'minus':
+                $base->quantity -= $request->quantity;
+                break;
+        }
+        
+        $base->save();
+
+        return redirect()->back();
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Base  $base
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Base $base)
     {
         //
     }

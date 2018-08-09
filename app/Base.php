@@ -5,14 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
-class Payment extends Model
+class Base extends Model
 {
     public static function boot()
     {
         parent::boot();
 
         self::creating(function ($model){
-            $model->created_by = Auth::id();
             $model->branch_id = Auth::user()->branch_id;
         });
     }
@@ -23,16 +22,6 @@ class Payment extends Model
     }
 
     protected $fillable = [
-        'payment', 'created_by', 'sale_id', 'branch_id'
+        'base', 'addition', 'quantity'
     ];
-
-    public function creator()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function sale()
-    {
-        return $this->belongsTo(Sale::class);
-    }
 }
