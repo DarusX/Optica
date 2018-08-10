@@ -181,7 +181,7 @@
             yearRange: "-100:+0",
             maxDate: 0
         })
-        $(".table").not(".modal .table").DataTable({
+        $(".table").not(".modal .table").not('.table-exam').DataTable({
             paging: false,
             searching: false
         })

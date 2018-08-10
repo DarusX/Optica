@@ -25,7 +25,7 @@
                         <div class="badge badge-rounded bg-gray">{{$exam->creator->name}}</div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-exam">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -39,31 +39,31 @@
                                     <th scope="row">
                                         Ambos
                                     </th>
-                                    <td>{{$exam->ou_sphere}}</td>
-                                    <td>{{$exam->ou_cylinder}}</td>
-                                    <td>{{$exam->ou_axis}}</td>
+                                    <td>{{signedNumber($exam->ou_sphere)}}</td>
+                                    <td>{{signedNumber($exam->ou_cylinder)}}</td>
+                                    <td>{{signedNumber($exam->ou_axis)}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                        Derecho
                                     </th>
-                                    <td>{{$exam->od_sphere}}</td>
-                                    <td>{{$exam->od_cylinder}}</td>
-                                    <td>{{$exam->od_axis}}</td>
+                                    <td>{{signedNumber($exam->od_sphere)}}</td>
+                                    <td>{{signedNumber($exam->od_cylinder)}}</td>
+                                    <td>{{signedNumber($exam->od_axis)}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         Izquierdo
                                     </th>
-                                    <td>{{$exam->os_sphere}}</td>
-                                    <td>{{$exam->os_cylinder}}</td>
-                                    <td>{{$exam->os_axis}}</td>
+                                    <td>{{signedNumber($exam->os_sphere)}}</td>
+                                    <td>{{signedNumber($exam->os_cylinder)}}</td>
+                                    <td>{{signedNumber($exam->os_axis)}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row"></th>
-                                    <td><strong>Adición:</strong> {{$exam->ou_sphere}}</td>
-                                    <td><strong>Alt:</strong> {{$exam->ou_cylinder}}</td>
-                                    <td><strong>Distancia pupilar:</strong> {{$exam->ou_axis}}</td>
+                                    <td><strong>Adición:</strong> {{signedNumber($exam->ou_sphere)}}</td>
+                                    <td><strong>Alt:</strong> {{signedNumber($exam->ou_cylinder)}}</td>
+                                    <td><strong>Distancia pupilar:</strong> {{signedNumber($exam->ou_axis)}}</td>
                                 </tr>
                             </tbody>
                         </table>
