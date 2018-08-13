@@ -180,4 +180,68 @@
         </div>
     </div>
 </section>
+<div class="container-fluid">
+    <div class="row">
+        @if($patient->exams->count() > 1)
+        <div class="col-sm-12">
+            <div class="embed-responsive embed-responsive-16by9">
+                <canvas id="myChart" class="embed-responsive-item"></canvas>
+            </div>
+        </div>
+        @endif
+    </div>
+</div>
+@endsection
+@section('js')
+<script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["", "", ""],
+                datasets: [{
+                    label: 'Derecho (Cilindro)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'od_cylinder'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#f27173",
+                    ],
+                    
+                }, {
+                    label: 'Izquierdo (Cilindro)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_cylinder'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#36A2EB",
+                    ],
+                    
+                }, {
+                    label: 'Izquierdo (Eje)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_axis'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#36A2EB",
+                    ],
+                    
+                }, {
+                    label: 'Derecho (Eje)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'od_axis'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#f27173",
+                    ],
+                    
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
 @endsection

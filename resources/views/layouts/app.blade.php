@@ -58,6 +58,7 @@
     <script src="{{asset('js/datepicker.es.js')}}"></script>
     <script src="{{asset('js/toastr.min.js')}}"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <!-- Main File-->
     <script src="{{asset('theme/js/front.js')}}"></script>
     <script>
@@ -200,6 +201,7 @@
         new Audio("{{asset('sounds/success.mp3')}}").play()
     </script>
     @endif
+    @yield('js')
 </body>
 
 </html>

@@ -16,21 +16,21 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->double('od_axis')->nullable();
-            $table->double('od_cylinder')->nullable();
-            $table->double('od_sphere')->nullable();
+            $table->double('od_axis')->default(0);
+            $table->double('od_cylinder')->default(0);
+            $table->double('od_sphere')->default(0);
             
-            $table->double('os_axis')->nullable();
-            $table->double('os_cylinder')->nullable();
-            $table->double('os_sphere')->nullable();
+            $table->double('os_axis')->default(0);
+            $table->double('os_cylinder')->default(0);
+            $table->double('os_sphere')->default(0);
             
-            $table->double('ou_axis')->nullable();
-            $table->double('ou_cylinder')->nullable();
-            $table->double('ou_sphere')->nullable();
+            $table->double('ou_axis')->default(0);
+            $table->double('ou_cylinder')->default(0);
+            $table->double('ou_sphere')->default(0);
 
-            $table->double('addition')->nullable();
-            $table->double('alt')->nullable();
-            $table->double('pupilary_distance')->nullable();
+            $table->double('addition')->default(0);
+            $table->double('alt')->default(0);
+            $table->double('pupilary_distance')->default(0);
 
             $table->integer('patient_id')->unsigned();
             $table->integer('created_by')->unsigned();
