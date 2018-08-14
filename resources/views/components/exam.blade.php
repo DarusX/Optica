@@ -54,6 +54,11 @@
             <a href="{{route('sales.create', $exam)}}" class="btn bg-warning" style="color: #000">
                 <i class="fas fa-glasses" aria-hidden="true"></i> Seleccionar armazón
             </a>
+            @if(!count($exam->sales))
+            <a href="{{route('exams.destroy', $exam)}}" class="btn bg-danger destroy" style="color: #fff">
+                <i class="fas fa-trash" aria-hidden="true"></i> Eliminar
+            </a>
+            @endif
         </div>
     </div>
 </div>

@@ -45,7 +45,21 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        Exam::create($request->all());
+        Exam::create([
+            'patient_id' => $request->patient_id,
+            'addition' => ($request->addition)? $request->addition: 0,
+            'alt' => ($request->alt)? $request->alt: 0,
+            'pupilary_distance' => ($request->pupilary_distance)? $request->pupilary_distance: 0,
+            'od_cylinder' => ($request->od_cylinder)? $request->od_cylinder: 0,
+            'od_sphere' => ($request->od_sphere)? $request->od_sphere: 0,
+            'od_axis' => ($request->od_axis)? $request->od_axis: 0,
+            'os_cylinder' => ($request->os_cylinder)? $request->os_cylinder: 0,
+            'os_sphere' => ($request->os_sphere)? $request->os_sphere: 0,
+            'os_axis' => ($request->os_axis)? $request->os_axis: 0,
+            'ou_cylinder' => ($request->ou_cylinder)? $request->ou_cylinder: 0,
+            'ou_sphere' => ($request->ou_sphere)? $request->ou_sphere: 0,
+            'ou_axis' => ($request->ou_axis)? $request->ou_axis: 0,
+        ]);
 
         Session::flash('msg', 'Registro guardado');
 
@@ -97,6 +111,7 @@ class ExamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Exam::destroy($id);
+        Session::flash('success', 'Examen eliminado');
     }
 }

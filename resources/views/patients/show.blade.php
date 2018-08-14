@@ -191,14 +191,23 @@
         @endif
     </div>
 </div>
+<h1></h1>
 @endsection
 @section('js')
+<script>
+    var labels = []
+</script>
+@foreach($patient->exams as $exam)
+<script>
+    labels.push("{{$exam->date}}")
+</script>
+@endforeach
 <script>
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: JSON.parse("{{json_encode(array_pluck($patient->exams, 'id'))}}"),
+                labels: labels,
                 datasets: [{
                     label: 'Derecho (Esfera)',
                     data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'od_sphere'))}}"),

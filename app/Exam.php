@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 use Auth;
 
 class Exam extends Model
@@ -24,6 +25,10 @@ class Exam extends Model
         'patient_id', 'created_by'
     ];
 
+    protected $appends =[
+        'date'
+    ];
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -37,6 +42,11 @@ class Exam extends Model
     public function sales()
     {
         return $this->hasMany(Sale::class)->orderBy('id', 'DESC');
+    }
+
+    public function getDateAttribute()
+    {
+        return Carbon::parse($this->created_at)->format('Y m d');
     }
     
 }
