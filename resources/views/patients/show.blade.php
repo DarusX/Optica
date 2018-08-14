@@ -198,31 +198,21 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["", "", ""],
+                labels: JSON.parse("{{json_encode(array_pluck($patient->exams, 'id'))}}"),
                 datasets: [{
+                    label: 'Derecho (Esfera)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'od_sphere'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#f27173",
+                    ],
+                }, {
                     label: 'Derecho (Cilindro)',
                     data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'od_cylinder'))}}"),
                     fill: false,
                     borderColor: [
                         "#f27173",
                     ],
-                    
-                }, {
-                    label: 'Izquierdo (Cilindro)',
-                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_cylinder'))}}"),
-                    fill: false,
-                    borderColor: [
-                        "#36A2EB",
-                    ],
-                    
-                }, {
-                    label: 'Izquierdo (Eje)',
-                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_axis'))}}"),
-                    fill: false,
-                    borderColor: [
-                        "#36A2EB",
-                    ],
-                    
                 }, {
                     label: 'Derecho (Eje)',
                     data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'od_axis'))}}"),
@@ -230,8 +220,28 @@
                     borderColor: [
                         "#f27173",
                     ],
-                    
-                }]
+                }, {
+                    label: 'Izquierdo (Esfera)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_sphere'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#36A2EB",
+                    ],
+                }, {
+                    label: 'Izquierdo (Cilindro)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_cylinder'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#36A2EB",
+                    ],
+                }, {
+                    label: 'Izquierdo (Eje)',
+                    data: JSON.parse("{{json_encode(array_pluck($patient->exams, 'os_axis'))}}"),
+                    fill: false,
+                    borderColor: [
+                        "#36A2EB",
+                    ],
+                },]
             },
             options: {
                 scales: {
