@@ -96,8 +96,9 @@ class BasesController extends Controller
      * @param  \App\Base  $base
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Base $base)
+    public function destroy($id)
     {
-        //
+        Base::destroy($id);
+        Session::flash('success', 'Base eliminada');
     }
 }

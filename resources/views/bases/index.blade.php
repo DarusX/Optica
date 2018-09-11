@@ -22,6 +22,7 @@
                                 <th>Cantidad</th>
                                 <th>Alta</th>
                                 <th>Baja</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,6 +57,9 @@
                                         </div>
                                     </form>
                                 </td>
+                                <td>
+                                    <a href="{{route('bases.destroy', $base)}}" class="btn btn-sm btn-danger destroy"><i class="fas fa-trash"></i></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -64,6 +68,7 @@
                                 <th></th>
                                 <th>Total:</th>
                                 <th>{{$bases->sum('quantity')}}</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                             </tr>

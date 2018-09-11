@@ -184,7 +184,7 @@
         })
         $(".table").not(".modal .table").not('.table-exam').DataTable({
             paging: false,
-            searching: false
+            order: [[0, "asc"], [1, "asc"]]
         })
         function signedNumber($param){
             if($param > 0) return "+" + Number.parseFloat($param).toFixed(2)
