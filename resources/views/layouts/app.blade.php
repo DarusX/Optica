@@ -20,7 +20,7 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{asset('theme/css/style.blue.css')}}" id="theme-stylesheet">
     <!--Toastr-->
-    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!--DataTables-->
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <!-- Custom stylesheet - for your changes-->
@@ -56,9 +56,9 @@
     <script src="{{asset('theme/assets/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="{{asset('js/datepicker.es.js')}}"></script>
-    <script src="{{asset('js/toastr.min.js')}}"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Main File-->
     <script src="{{asset('theme/js/front.js')}}"></script>
     <script>
